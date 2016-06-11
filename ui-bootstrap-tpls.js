@@ -1423,6 +1423,7 @@
 
                 this.activeDate = ngModelCtrl.$modelValue || new Date();
 
+                selectedDate = self.activeDate.toLocaleDateString();
                 ngModelCtrl.$render = function() {
                     self.render();
                 };
@@ -1506,9 +1507,6 @@
             };
 
             $scope.select = function(date) {
-                if(selectedDate == date.toLocaleDateString()){
-                    return;
-                }
                 selectedDate = date.toLocaleDateString();
                 if ($scope.datepickerMode === self.minMode) {
                     var dt = ngModelCtrl.$viewValue ? dateParser.fromTimezone(new Date(ngModelCtrl.$viewValue), ngModelOptions.timezone) : new Date(0, 0, 0, 0, 0, 0, 0);
